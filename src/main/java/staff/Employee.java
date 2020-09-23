@@ -1,5 +1,7 @@
 package staff;
 
+import com.sun.istack.internal.NotNull;
+
 public abstract class Employee {
 
     private String name;
@@ -16,6 +18,12 @@ public abstract class Employee {
         return name;
     }
 
+    public void setName(String name) {
+        if (name != "" && name != null) {
+            this.name = name;
+        }
+    }
+
     public String getNINumber() {
         return nINumber;
     }
@@ -25,7 +33,9 @@ public abstract class Employee {
     }
 
     public void raiseSalary(double amount) {
-        this.salary *= amount;
+        if (amount >= 1.00) {
+            this.salary *= amount;
+        }
     }
 
     public double payBonus() {
